@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 import operator
 import readline
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--debug', help = 'print debug info for stack, oper, or all')
+args = parser.parse_args()
+
+stackDebug = args.debug == 'all' or args.debug == 'stack'
+operDebug = args.debug == 'all' or args.debug == 'oper'
 
 ops = {
     '+': operator.add,
@@ -20,8 +28,13 @@ def calculate(arg):
             function = ops[token]
             result = function(arg1, arg2)
             stack.append(result)
-    print(stack)
-    return stack.pop()
+            if operDebug:
+                print(token, function)
+        if stackDebug:
+            print(stack)
+    val = stack.pop()
+    print('Result:', val)
+    return val
 
 def main():
     while True:
