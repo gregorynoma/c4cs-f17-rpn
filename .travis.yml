@@ -2,7 +2,9 @@ language: python
 python:
   - "3.5"
 before_script:
-    - pip install pytest pytest-cov
-    - pip install coveralls
-script: make test
-after_success: coveralls
+  - pip install python-coveralls
+  - pip install coverage
+script:
+  - make test --with-coverage
+after_success:
+  - coveralls
