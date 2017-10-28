@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-import  operator
+import operator
+import readline
 
 ops = {
     '+': operator.add,
@@ -19,7 +20,7 @@ def calculate(arg):
             function = ops[token]
             result = function(arg1, arg2)
             stack.append(result)
-    #print(stack)
+    print(stack)
     return stack.pop()
 
 def main():
