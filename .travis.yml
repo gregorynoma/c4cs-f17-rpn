@@ -4,7 +4,8 @@ python:
 before_script:
   - pip install python-coveralls
   - pip install coverage
+  - pip install nose
 script:
-  - make test --with-coverage
+  - nosetests --with-coverage
 after_success:
   - coveralls
