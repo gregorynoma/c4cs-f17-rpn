@@ -3,12 +3,17 @@ import operator
 import readline
 import argparse
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--debug', help = 'print debug info for stack, oper, or all')
-args = parser.parse_args()
 
-stackDebug = args.debug == 'all' or args.debug == 'stack'
-operDebug = args.debug == 'all' or args.debug == 'oper'
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--debug', help = 'print debug info for stack, oper, or all')
+    args = parser.parse_args()
+
+    stackDebug = args.debug == 'all' or args.debug == 'stack'
+    operDebug = args.debug == 'all' or args.debug == 'oper'
+else:
+    stackDebug = False
+    operDebug = False
 
 ops = {
     '+': operator.add,
